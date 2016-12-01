@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadratic Equation Solver</title>
+</head>
+<body>
+<h1>Quadratic Equation Solver</h1>
+<p><strong>General form:</strong> <i>ax<sup>2</sup> + bx + c = 0 </i></p>
+
+<form id="myForm">
+    <div>
+        <label for="param_a">a: </label>
+        <input type="number" name="param_a" />
+    </div>
+    <div>
+        <label for="param_b">b: </label>
+        <input type="number" name="param_b" />
+    </div>
+    <div>
+        <label for="param_c">c: </label>
+        <input type="number" name="param_c" />
+    </div>
+    <br />
+    <input type="button" value="Solve" onClick="quadraticEquationSolver()"/>
+</form>
+<br/>
+<div id="solution">
+</div>
+<script>
+    function quadraticEquationSolver(){
+        // 0. Variables allocation.
+        var a = document.getElementById("myForm").elements[0].value;
+        var b = document.getElementById("myForm").elements[1].value;
+        var c = document.getElementById("myForm").elements[2].value;
+        var d = 0;
+        var x1 = 0, x2 = 0;
+        // 1. Computation of delta.
+        var delta = (b*b)-(4*a*c);
+        // 2. Evaluation of delta.
+        if (delta <  0){
+            document.getElementById("solution").innerHTML = "No solution !";
+        }
+        else if (delta == 0){
+            x1 = -b/2*a;
+            document.getElementById("solution").innerHTML = 'There is one solution: ' + x1;
+        }
+        else if (delta > 0) {
+            x1 = (-b + Math.sqrt(delta))/2*a;
+            x2 = (-b - Math.sqrt(delta))/2*a;
+            document.getElementById("solution").innerHTML = 'There are two solutions: (' + x2 +', ' + x1 + ') ';
+        }
+    }
+</script>
+</body>
+</html>

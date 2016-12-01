@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadratic Equation Solver</title>
+</head>
+<body>
+<h1>Quadratic Equation Solver</h1>
+<p><strong>General form:</strong> <i>ax<sup>2</sup> + bx + c = 0 </i></p>
+<p>Click the button to enter equation.</p>
+
+<button onclick="enterEq()">Enter equation</button>
+<p id="equation"></p>
+<!--<div id="solution"></div>-->
+<script>
+
+    function enterEq(){
+        var equation = prompt("Please enter ecuation as -5x^2 + 12x - 4 = 0 or 4x^2 - 256 = 0 or 4x - 8 = 0 ");
+        console.log(equation);
+        if (equation != null) {
+            document.getElementById("equation").innerHTML = equation;}
+        parameters = parseEq(equation);
+        if (parameters.a ==0) {
+            console.log("erfgh");
+            return liniarEquationb(parameters.b, parameters.c);
+        }
+        quadraticEquationSolver(parameters.a, parameters.b, parameters.c);
+        }
+
+
+    function parseEq(eq, variable){
+        variable = variable || 'x';
+        eq = eq.replace(/ /g, '');
+        var negative = eq.startsWith('-');
+        var parsed = eq.split(/\-|\+|\=/g);
+        var match = eq.match(/\-|\+|\=/g);
+
+        parsed = parsed.map(parseFloat);
+
+        if (negative) {
+            parsed = parsed.slice(1);
+            match = match.slice(1);
+            parsed[0] = -1 * (parsed[0] || 1);
+        }
+
+        return {
+            a: parsed[0] || 1,
+            b: (match[0] === '-' ? -1 * parsed[1] : parsed[1]) || 1,
+            c: (match[1] === '-' ? -1 * parsed[2] : parsed[2]) || 0
+        };
+    }
+    function liniarEquationc(a,c){
+        x = -c / a;
+        x1 = Math.sqrt(x);
+        alert('There are two solutions: x1 = -' +x1.toString() + ' ,x2 =' +x1.toString()  );
+    }
+
+    function liniarEquationb(b,c){
+        x1 = b/(-c);
+        alert('There is one solution: x = ' +x1.toString()  );
+    }
+    function quadraticEquationSolver(a,b,c){
+        console.log(a,b,c);
+        var d = 0;
+        var x1 = 0, x2 = 0;
+        var delta = (b*b)-(4*a*c);
+        if (b * b < 4 * a * c) {
+                i = Math.sqrt(4 * a * c - b * b);
+                i = i / (2 * a);
+                istring = i + "";
+                if (i < 0) {
+                    x1 = (0 - b)/(2 * a) + " " + i + "i";
+                    x2 = (0 - b)/(2 * a) + " " + i + "i";
+                    alert('There are two solutions: x1 = ' +x1.toString() + ' ,x2 =' +x2.toString()  );
+                }
+                else{
+                    x1 = (0 - b)/(2 * a) + " + " + i + "i";
+                    x2 = (0 - b)/(2 * a) + " - " + i + "i";
+                    alert('There are two solutions: x1 = ' +x1.toString() + ' ,x2 =' +x2.toString()  );
+                }
+            }
+        else if (delta == 0){
+            x1 = -b/2*a;
+            alert('There is one solution: x = ' +x1.toString()  );
+        }
+        else if (delta > 0) {
+            x1 = (-b + Math.sqrt(delta))/2*a;
+            x2 = (-b - Math.sqrt(delta))/2*a;
+            alert('There are two solutions: x1 = ' +x1.toString() + ' ,x2 =' +x2.toString()  );
+        }
+    }
+
+</script>
+</body>
+</html>

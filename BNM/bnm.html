@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,th,td {
+        border : 1px solid black;
+        border-collapse: collapse;
+    }
+    th,td {
+        padding: 5px;
+    }
+</style>
+<body>
+<button name="XML" type="button" onclick="loadXMLDoc()">Get Exchange Rate XML parsed</button>
+<br><br>
+<p id="tableXML"></p>
+<table id="parsingXML"></table>
+<script type="text/javascript" src="xml.js" > </script>
+
+<button name="JSON" type="button" onclick="parseJSON()">Get Exchange Rate JSON parsed</button>
+<br><br>
+<p id="tableJSON"></p>
+<table id="parsingJSON"></table>
+<script type="text/javascript" src="xml2jsonobj.js" > </script>
+
+</body>
+</html>
